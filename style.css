@@ -1,0 +1,133 @@
+body {
+  margin: 0;
+  padding: 0 1vw;
+  height: 100vh;
+  background-color: #83BCA9;
+  font-family: "Open Sans", sans-serif;
+  overflow: hidden;
+}
+
+h1 {
+  text-align: center;
+  text-transform: uppercase;
+  margin: 0;
+  padding: 50px;
+}
+
+#game {
+  margin: 0 auto;
+  display: flex;
+  flex-flow: row wrap;
+  height: 80vh;
+  justify-content: space-around;
+  align-content: space-between;
+  perspective-origin: 50% 50%;
+  max-width: 100vh;
+}
+
+.card-container {
+  flex-basis: 25%;
+  display: flex;
+  justify-content: center;
+}
+
+
+.card {
+  border: 5px solid #E6E8E6;
+  background: #001852 url('stripes.svg');
+  background-size: 100%;
+  border-radius: 1em;
+  height: 18vh;
+  width: 13vh;
+  display: inline-block;
+  transform-origin: 50% 50%;
+
+  animation-name: flip;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: 0;
+}
+
+.card:hover:not(.flipped) {
+  animation-name: hoverAnim;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.flipped {
+  animation-name: flip;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+}
+
+@keyframes flip {
+  0% {
+    transform: perspective(500px) translateZ(0px) rotateY(0deg);
+  }
+  30% {
+    transform: perspective(500px) translateZ(200px) rotateY(0deg);
+  }
+  40% {
+    transform: perspective(500px) translateZ(200px) rotateY(0deg);
+  }
+  60% {
+    transform: perspective(500px) translateZ(200px) rotateY(180deg);
+  }
+  70% {
+    transform: perspective(500px) translateZ(200px) rotateY(180deg);
+  }
+  100% {
+    transform: perspective(500px) translateZ(0px) rotateY(180deg);
+  }
+}
+
+@keyframes hoverAnim {
+  0% {
+    transform: perspective(500px) translateZ(20px);
+  }
+  50% {
+    transform: perspective(500px) translateZ(50px);
+  }
+  100% {
+    transform: perspective(500px) translateZ(20px);
+  }
+}
+
+/* Modified CSS Modal by Timothy Long - https://codepen.io/timothylong/pen/HhAer */
+
+.modal-window {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.25);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s;
+}
+
+.modal-window.opened {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-window > div {
+  width: 400px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2em;
+  background: #ffffff;
+}
+
+.modal-window h2 {
+  font-size: 150%;
+  margin: 0 0 15px;
+}
